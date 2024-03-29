@@ -42,17 +42,13 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
 
         configView()
+        setUpValues()
     }
 
+    // MARK: - Functions
+    
     func configView() {
         headerBackUIView.addBorderToView()
-        self.title = viewModel.job.positionName
-        jobImageView.setImage(with: viewModel.job)
-        companyNameLabel.text = viewModel.job.companyName
-        salaryRangeLabel.text = viewModel.job.salaryRange
-        aboutCompanyLabel.text = viewModel.job.companyDescription
-        aboutPositionLabel.text = viewModel.job.positionDescription
-        viewModel.addTechnologies(to: technologiesStackView)
         fixedSalaryRangeLabel.addBorderToLabel()
         fixedAboutCompanyLabel.addBorderToLabel()
         fixedAboutPositionLabel.addBorderToLabel()
@@ -61,6 +57,32 @@ class DetailsViewController: UIViewController {
         shareButton.addRoundedBorder()
         shareButton.addBackgroundShadow()
     }
+    
+    func setUpValues() {
+        self.title = viewModel.job.positionName
+        jobImageView.setImage(with: viewModel.job.imageUrl)
+        companyNameLabel.text = viewModel.job.companyName
+        salaryRangeLabel.text = viewModel.job.salaryRange
+        aboutCompanyLabel.text = viewModel.job.companyDescription
+        aboutPositionLabel.text = viewModel.job.positionDescription
+        addTechnologies(to: technologiesStackView)
+    }
+    
+    func addTechnologies(to stackView: UIStackView) {
+        
+        for technology in viewModel.job.technologies {
+            
+            let label = UILabel()
+            label.text = " \(technology)    "
+            label.textAlignment = .center
+            label.addBorderToLabel()
+            
+            stackView.addArrangedSubview(label)
+            
+            }
+    }
+    
+    // MARK: - Actions
     
     @IBAction func share(_ sender: Any) {
         present(viewModel.getActivityViewController(), animated: true)

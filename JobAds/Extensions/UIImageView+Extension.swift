@@ -15,8 +15,8 @@ extension UIImageView {
     
     // MARK: - Functions
     
-    func setImage(with job: Job) {
-        kf.setImage(with: job.imageUrl)
+    func setImage(with url: URL) {
+        kf.setImage(with: url)
 
     }
     

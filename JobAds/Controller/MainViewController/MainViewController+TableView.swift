@@ -32,13 +32,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: JobTableViewCell.identifier, for: indexPath) as? JobTableViewCell else { return UITableViewCell() }
         
-        cell.viewModel.setupCell(with: viewModel.jobs[indexPath.row])
+        cell.setupCell(with: jobs[indexPath.row])
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let job = viewModel.jobs[indexPath.row]
+        let job = jobs[indexPath.row]
         self.openDetail(with: job)
     }
     

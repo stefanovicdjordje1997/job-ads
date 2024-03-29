@@ -13,6 +13,7 @@ class MainViewModel {
     // MARK: - Properties
     
     var jobs = [Job]()
+    let api = ApiManager()
     
     // MARK: - Functions
     
@@ -24,20 +25,16 @@ class MainViewModel {
         jobs.count
     }
     
-    func getData(reload tableView: UITableView, animation: UIActivityIndicatorView) {
-        ApiManager.fetchJobs { result in
+    func getData(completionHandler: @escaping (Result<[Job], Error>) -> Void) {
+        api.fetchJobs { [weak self] result in
             switch result {
-            case .success(let data):
-                self.jobs = data
-                DispatchQueue.main.async {
-                    tableView.reloadData()
-                    animation.stopAnimating()
-                }
-                
-            case .failure(let error):
-                print(error)
+            case.success(let data):
+                self?.jobs = data
+                completionHandler(.success(data))
+            case.failure(let error):
+                completionHandler(.failure(error))
             }
         }
     }
-    
+
 }

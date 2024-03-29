@@ -20,16 +20,8 @@ class JobTableViewCell: UITableViewCell {
     @IBOutlet weak var jobImageView: UIImageView!
     
     // Variables
-    public static var identifier: String {
-        get {
-            return "JobTableViewCell"
-        }
-    }
-    
-    lazy var viewModel: JobTableCellViewModel = {
-            return JobTableCellViewModel(cell: self)
-        }()
-    
+    public static var identifier = "JobTableViewCell"
+        
     // MARK: - Lifecycle
     
     override func awakeFromNib() {
@@ -40,6 +32,18 @@ class JobTableViewCell: UITableViewCell {
     
     public static func register() -> UINib {
         UINib(nibName: identifier, bundle: nil)
+    }
+    
+    func setupCell(with job: Job) {
+        backView.addBorderToView()
+        imageBackView.addBorderToView()
+        backView.addBackgroundShadow()
+        positionNameLabel.text = job.positionName
+        salaryRangeLabel.text = job.salaryRange
+        salaryRangeLabel.textColor = .darkGreyLightGrey
+        jobImageView.setImage(with: job.imageUrl)
+        selectionStyle = .none
+        chevronImageView.tintColor = .darkGreyLightGrey
     }
     
 }

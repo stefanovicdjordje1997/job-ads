@@ -14,22 +14,10 @@ class DetailsViewModel {
     
     var job: Job
     
-    
     // MARK: - Constructors
     
     init(job: Job) {
         self.job = job
-    }
-    
-    func addTechnologies(to stackView: UIStackView) {
-        for technology in job.technologies {
-            let label = UILabel()
-            label.text = " \(technology)    "
-            label.textAlignment = .center
-            label.addBorderToLabel()
-            
-            stackView.addArrangedSubview(label)
-            }
     }
     
     func getActivityViewController() -> UIActivityViewController {

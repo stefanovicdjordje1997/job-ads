@@ -17,9 +17,9 @@ enum NetworkError: Error {
 
 class ApiManager {
     
-    static private let baseUrl = "https://4a7d50520f0e476db12c79c666115c5c.api.mockbin.io/"
+    private let baseUrl = "https://4a7d50520f0e476db12c79c666115c5c.api.mockbin.io/"
     
-    static func fetchJobs(completionHandler: @escaping (Result<[Job], Error>) -> Void) {
+    func fetchJobs(completionHandler: @escaping (Result<[Job], Error>) -> Void) {
         guard let url = URL(string: baseUrl) else {
             completionHandler(.failure(NetworkError.invalidUrlError))
             return

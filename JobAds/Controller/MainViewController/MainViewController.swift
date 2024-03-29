@@ -17,6 +17,7 @@ class MainViewController: UIViewController {
     
     // Variables
     var viewModel: MainViewModel = MainViewModel()
+    var jobs = [Job]()
     
     // MARK: - Lifecycle
     
@@ -36,7 +37,20 @@ class MainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         // Fetching data from api, reloading tableView and stopping animation when data is loaded
-        viewModel.getData(reload: jobsTableView, animation: loadingActivityIndicator)
+        viewModel.getData { [weak self] result in
+            switch result {
+            case .success(let data):
+                self?.jobs = data
+                DispatchQueue.main.async {
+                    self?.jobsTableView.reloadData()
+                    self?.loadingActivityIndicator.stopAnimating()
+                }
+            case .failure(_):
+                DispatchQueue.main.async {
+                    self?.showAlert(title: "Oops! An Error Occurred.", message: "Job positions cannot be fetched.")
+                }
+            }
+        }
     }
     
     // MARK: - Functions
@@ -47,8 +61,13 @@ class MainViewController: UIViewController {
         DispatchQueue.main.async {
             self.navigationController?.pushViewController(detailsController, animated: true)
         }
-        
     }
-
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+    }
+    
 }
 
