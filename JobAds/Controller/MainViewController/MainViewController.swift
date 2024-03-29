@@ -38,6 +38,17 @@ class MainViewController: UIViewController {
         // Fetching data from api, reloading tableView and stopping animation when data is loaded
         viewModel.getData(reload: jobsTableView, animation: loadingActivityIndicator)
     }
+    
+    // MARK: - Functions
+    
+    func openDetail(with job: Job) {
+        let detailsViewModel = DetailsViewModel(job: job)
+        let detailsController = DetailsViewController(viewModel: detailsViewModel)
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(detailsController, animated: true)
+        }
+        
+    }
 
 }
 

@@ -37,4 +37,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let job = viewModel.jobs[indexPath.row]
+        self.openDetail(with: job)
+    }
+    
 }

@@ -21,9 +21,7 @@
 			</array>
 		</dict>
 	</dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>TitilliumWeb-Regular.ttf</string>
-	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Please allow access to save</string>
 </dict>
 </plist>

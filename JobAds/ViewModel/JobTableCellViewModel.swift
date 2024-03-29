@@ -23,8 +23,8 @@ class JobTableCellViewModel {
     // MARK: - Functions
     
     func setupCell(with job: Job) {
-        cell.backView.addBorderAndRoundedCorners()
-        cell.imageBackView.addBorderAndRoundedCorners()
+        cell.backView.addBorderToView()
+        cell.imageBackView.addBorderToView()
         cell.backView.addBackgroundShadow()
         cell.positionNameLabel.text = job.positionName
         cell.salaryRangeLabel.text = job.salaryRange
