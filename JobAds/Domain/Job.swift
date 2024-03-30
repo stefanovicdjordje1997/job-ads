@@ -19,7 +19,7 @@ struct Job: Codable {
     let positionDescription: String
     let companyDescription: String
     let shareUrl: URL
-
+    
     // MARK: - Job model coding keys
     
     enum CodingKeys: String, CodingKey {

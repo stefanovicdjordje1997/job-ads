@@ -7,17 +7,20 @@
 
 import Foundation
 
+// MARK: - NetworkError enum
+
 enum NetworkError: Error {
-    
     case invalidUrlError
     case decodingError
 }
 
-// MARK: - Networking
-
 class ApiManager {
     
+    // MARK: - Properties
+    
     private let baseUrl = "https://4a7d50520f0e476db12c79c666115c5c.api.mockbin.io/"
+    
+    // MARK: - Functions
     
     func fetchJobs(completionHandler: @escaping (Result<[Job], Error>) -> Void) {
         guard let url = URL(string: baseUrl) else {
@@ -26,7 +29,7 @@ class ApiManager {
         }
         
         URLSession.shared.dataTask(with: url) {dataResponse, urlResponse, error in
-    
+            
             if error == nil,
                let data = dataResponse,
                let resultData = try? JSONDecoder().decode(JobWrapper.self, from: data) {

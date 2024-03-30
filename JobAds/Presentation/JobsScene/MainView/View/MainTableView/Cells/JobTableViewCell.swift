@@ -30,20 +30,19 @@ class JobTableViewCell: UITableViewCell {
 
     // MARK: - Functions
     
-    public static func register() -> UINib {
-        UINib(nibName: identifier, bundle: nil)
-    }
-    
     func setupCell(with job: Job) {
+        jobImageView.setImage(with: job.imageUrl)
+        positionNameLabel.text = job.positionName
+        salaryRangeLabel.text = job.salaryRange
+        
         backView.addBorderToView()
         imageBackView.addBorderToView()
         backView.addBackgroundShadow()
-        positionNameLabel.text = job.positionName
-        salaryRangeLabel.text = job.salaryRange
+        
         salaryRangeLabel.textColor = .darkGreyLightGrey
-        jobImageView.setImage(with: job.imageUrl)
-        selectionStyle = .none
         chevronImageView.tintColor = .darkGreyLightGrey
+        
+        selectionStyle = .none
     }
     
 }

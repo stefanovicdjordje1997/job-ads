@@ -17,11 +17,7 @@ extension UIImageView {
     
     func setImage(with url: URL) {
         kf.setImage(with: url)
-
     }
-    
-    
-
 }
 
 

@@ -21,8 +21,8 @@ class DetailsViewModel {
     }
     
     func getActivityViewController() -> UIActivityViewController {
+        
         let url = job.shareUrl
-          
         
         let shareSheetViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         

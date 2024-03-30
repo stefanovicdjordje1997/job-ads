@@ -15,7 +15,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func setupTableView() {
         jobsTableView.delegate = self
         jobsTableView.dataSource = self
-        jobsTableView.register(JobTableViewCell.register(), forCellReuseIdentifier: JobTableViewCell.identifier)
+        jobsTableView.register(UINib(nibName: JobTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: JobTableViewCell.identifier)
         jobsTableView.separatorStyle = .none
     }
     

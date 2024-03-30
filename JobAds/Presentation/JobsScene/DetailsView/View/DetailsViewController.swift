@@ -8,9 +8,10 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-
+    
     // MARK: - Properties
     
+    // IBOutlets
     @IBOutlet weak var fixedTechnologiesLabel: UILabel!
     @IBOutlet weak var fixedAboutPositionLabel: UILabel!
     @IBOutlet weak var fixedAboutCompanyLabel: UILabel!
@@ -23,13 +24,16 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var salaryRangeLabel: UILabel!
     @IBOutlet weak var companyNameLabel: UILabel!
     @IBOutlet weak var jobImageView: UIImageView!
+    
+    // Variables
     var viewModel: DetailsViewModel
+    private let identifier = "DetailsViewController"
     
     // MARK: - Constructors
     
     init(viewModel: DetailsViewModel) {
         self.viewModel = viewModel
-        super.init(nibName: "DetailsViewController", bundle: nil)
+        super.init(nibName: identifier, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -40,22 +44,29 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configView()
         setUpValues()
+        
     }
-
+    
     // MARK: - Functions
     
     func configView() {
         headerBackUIView.addBorderToView()
+        
         fixedSalaryRangeLabel.addBorderToLabel()
         fixedAboutCompanyLabel.addBorderToLabel()
         fixedAboutPositionLabel.addBorderToLabel()
         fixedTechnologiesLabel.addBorderToLabel()
+        
         headerBackUIView.addBackgroundShadow()
+        
         shareButton.addRoundedBorder()
         shareButton.addBackgroundShadow()
+        
+        navigationController?.navigationBar.tintColor = .blackWhite
+        navigationItem.leftBarButtonItem?.tintColor = .blackWhite
     }
     
     func setUpValues() {
@@ -79,7 +90,7 @@ class DetailsViewController: UIViewController {
             
             stackView.addArrangedSubview(label)
             
-            }
+        }
     }
     
     // MARK: - Actions

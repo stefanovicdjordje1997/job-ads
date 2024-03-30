@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
+// MARK: UIButtonExtension
+
 extension UIButton {
+    
+    // MARK: - Functions
     
     func addRoundedBorder() {
         layer.cornerRadius = 5

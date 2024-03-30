@@ -45,7 +45,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="IKs-Ie-tr3" secondAttribute="height" multiplier="1:1" id="Ek7-jb-Y97"/>
                                     <constraint firstItem="Eao-xH-8ds" firstAttribute="top" secondItem="IKs-Ie-tr3" secondAttribute="top" constant="8" id="HND-Tf-42u"/>
